@@ -22,9 +22,7 @@ public class Faturas {
 				.collect(
 						Collectors.groupingBy(
 								Lancamento::getMes,
-								Collectors.summingDouble(Lancamento::getValor)
-						)
-				);
+								Collectors.summingDouble(Lancamento::getValor)));
 		return sortedMes;
 	}
 	

@@ -18,16 +18,14 @@ public class Exercicio {
 		List<Lancamento> lancamentos = new LancamentoService().listarLancamentos();
 		
 		System.out.println("---Gastos ordenados por mes---");
-		Faturas gastoMes = new Faturas(lancamentos);
-		gastoMes.getTotalMeses().forEach((mes, l) -> System.out.format("Total do mes %s : R$ %s \n", mes, l));
+		Faturas faturas = new Faturas(lancamentos);
+		faturas.getTotalMeses().forEach((mes, l) -> System.out.format("Total do mes %s : R$ %s \n", mes, l));
 		
 		System.out.println("\n---Todos os lancamentos de uma mesma categoria de sua escolha---");
-		
-		gastoMes.getCategoria(Integer.parseInt(args[0])).stream().forEach((System.out::println));	
+		faturas.getCategoria(Integer.parseInt(args[0])).stream().forEach((System.out::println));	
 		
 		System.out.println("\n---Total da fatura de um mes em especifico---");
-		
-		Double faturaMes = gastoMes.getTotalMes(Integer.parseInt(args[1]));
+		Double faturaMes = faturas.getTotalMes(Integer.parseInt(args[1]));
 		System.out.format("Total do mes %s: R$ %s", args[1] ,faturaMes);
 		
 	}
